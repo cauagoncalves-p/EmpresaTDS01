@@ -49,12 +49,12 @@
             // 
             // dtpDataFolha
             // 
-            this.dtpDataFolha.Enabled = false;
             this.dtpDataFolha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDataFolha.Location = new System.Drawing.Point(29, 62);
             this.dtpDataFolha.Name = "dtpDataFolha";
             this.dtpDataFolha.Size = new System.Drawing.Size(111, 20);
             this.dtpDataFolha.TabIndex = 0;
+            this.dtpDataFolha.TabStop = false;
             // 
             // lblDataFolha
             // 
@@ -156,24 +156,24 @@
             this.txtSalarioFolha.Enabled = false;
             this.txtSalarioFolha.Location = new System.Drawing.Point(383, 106);
             this.txtSalarioFolha.Name = "txtSalarioFolha";
-            this.txtSalarioFolha.Size = new System.Drawing.Size(100, 20);
-            this.txtSalarioFolha.TabIndex = 8;
+            this.txtSalarioFolha.Size = new System.Drawing.Size(107, 20);
+            this.txtSalarioFolha.TabIndex = 7;
             // 
             // txtImpostoRenda
             // 
             this.txtImpostoRenda.Enabled = false;
             this.txtImpostoRenda.Location = new System.Drawing.Point(383, 151);
             this.txtImpostoRenda.Name = "txtImpostoRenda";
-            this.txtImpostoRenda.Size = new System.Drawing.Size(100, 20);
-            this.txtImpostoRenda.TabIndex = 9;
+            this.txtImpostoRenda.Size = new System.Drawing.Size(107, 20);
+            this.txtImpostoRenda.TabIndex = 8;
             // 
             // txtSalarioLiquido
             // 
             this.txtSalarioLiquido.Enabled = false;
             this.txtSalarioLiquido.Location = new System.Drawing.Point(383, 207);
             this.txtSalarioLiquido.Name = "txtSalarioLiquido";
-            this.txtSalarioLiquido.Size = new System.Drawing.Size(100, 20);
-            this.txtSalarioLiquido.TabIndex = 10;
+            this.txtSalarioLiquido.Size = new System.Drawing.Size(107, 20);
+            this.txtSalarioLiquido.TabIndex = 9;
             // 
             // btnLimpar
             // 
@@ -201,10 +201,11 @@
             // 
             // txtSalario
             // 
-            this.txtSalario.Location = new System.Drawing.Point(28, 141);
+            this.txtSalario.Location = new System.Drawing.Point(28, 142);
+            this.txtSalario.MaxLength = 10;
             this.txtSalario.Name = "txtSalario";
             this.txtSalario.Size = new System.Drawing.Size(100, 20);
-            this.txtSalario.TabIndex = 11;
+            this.txtSalario.TabIndex = 1;
             // 
             // Form1
             // 
