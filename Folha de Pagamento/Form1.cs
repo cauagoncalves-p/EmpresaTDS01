@@ -18,8 +18,8 @@ namespace Folha_de_Pagamento
         public Form1()
         {
             InitializeComponent();
-            
         }
+
         private double imposto = 0;
         private double salario = 0;
        
@@ -93,9 +93,11 @@ namespace Folha_de_Pagamento
                     precoClube = 30;
                 }
             }
+
             // Calculado o salario menos o imposto
             double calcImposto = (salario * imposto) / 100;
             salario -= calcImposto;
+            // Calculado o salario menos os outros adicionais
             salario -= precoPlano + precoClube;
             
             txtSalarioLiquido.Text = salario.ToString();
