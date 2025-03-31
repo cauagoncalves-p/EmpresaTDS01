@@ -97,7 +97,7 @@ namespace Folha_de_Pagamento
             // Calculado o salario menos os outros adicionais
             salario -= precoPlano + precoClube;
             
-            txtSalarioLiquido.Text = salario.ToString();
+            txtSalarioLiquido.Text = salario.ToString("C2");
 
         }
 
