@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dtpDataFolha = new System.Windows.Forms.DateTimePicker();
             this.lblDataFolha = new System.Windows.Forms.Label();
             this.lblSalario = new System.Windows.Forms.Label();
-            this.nudSalario = new System.Windows.Forms.NumericUpDown();
             this.cbxPlano = new System.Windows.Forms.CheckBox();
             this.lblClubeLazer = new System.Windows.Forms.Label();
             this.cbxClube = new System.Windows.Forms.ComboBox();
@@ -43,11 +43,13 @@
             this.txtImpostoRenda = new System.Windows.Forms.TextBox();
             this.txtSalarioLiquido = new System.Windows.Forms.TextBox();
             this.btnLimpar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.nudSalario)).BeginInit();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.txtSalario = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // dtpDataFolha
             // 
+            this.dtpDataFolha.Enabled = false;
             this.dtpDataFolha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDataFolha.Location = new System.Drawing.Point(29, 62);
             this.dtpDataFolha.Name = "dtpDataFolha";
@@ -74,28 +76,13 @@
             this.lblSalario.TabIndex = 2;
             this.lblSalario.Text = "Salário ";
             // 
-            // nudSalario
-            // 
-            this.nudSalario.DecimalPlaces = 2;
-            this.nudSalario.Location = new System.Drawing.Point(29, 143);
-            this.nudSalario.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.nudSalario.Name = "nudSalario";
-            this.nudSalario.Size = new System.Drawing.Size(120, 20);
-            this.nudSalario.TabIndex = 3;
-            // 
             // cbxPlano
             // 
             this.cbxPlano.AutoSize = true;
-            this.cbxPlano.Checked = true;
-            this.cbxPlano.CheckState = System.Windows.Forms.CheckState.Indeterminate;
             this.cbxPlano.Location = new System.Drawing.Point(29, 188);
             this.cbxPlano.Name = "cbxPlano";
             this.cbxPlano.Size = new System.Drawing.Size(102, 17);
-            this.cbxPlano.TabIndex = 4;
+            this.cbxPlano.TabIndex = 2;
             this.cbxPlano.Text = "Plano de Saúde";
             this.cbxPlano.UseVisualStyleBackColor = true;
             // 
@@ -113,21 +100,24 @@
             // 
             this.cbxClube.FormattingEnabled = true;
             this.cbxClube.Items.AddRange(new object[] {
+            "Sem Plano",
             "Clube A",
             "Clube B",
             "Clube C"});
             this.cbxClube.Location = new System.Drawing.Point(28, 271);
             this.cbxClube.Name = "cbxClube";
             this.cbxClube.Size = new System.Drawing.Size(121, 21);
-            this.cbxClube.TabIndex = 6;
+            this.cbxClube.TabIndex = 3;
             // 
             // btnCalcular
             // 
-            this.btnCalcular.Location = new System.Drawing.Point(260, 25);
+            this.btnCalcular.Image = ((System.Drawing.Image)(resources.GetObject("btnCalcular.Image")));
+            this.btnCalcular.Location = new System.Drawing.Point(182, 18);
             this.btnCalcular.Name = "btnCalcular";
-            this.btnCalcular.Size = new System.Drawing.Size(75, 23);
-            this.btnCalcular.TabIndex = 7;
+            this.btnCalcular.Size = new System.Drawing.Size(94, 49);
+            this.btnCalcular.TabIndex = 4;
             this.btnCalcular.Text = "Calcular";
+            this.btnCalcular.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCalcular.UseVisualStyleBackColor = true;
             this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
@@ -135,71 +125,94 @@
             // 
             this.lblSalarioFolha.AutoSize = true;
             this.lblSalarioFolha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSalarioFolha.Location = new System.Drawing.Point(257, 77);
+            this.lblSalarioFolha.Location = new System.Drawing.Point(259, 110);
             this.lblSalarioFolha.Name = "lblSalarioFolha";
             this.lblSalarioFolha.Size = new System.Drawing.Size(87, 16);
-            this.lblSalarioFolha.TabIndex = 8;
+            this.lblSalarioFolha.TabIndex = 7;
             this.lblSalarioFolha.Text = "Salário Folha";
             // 
             // lblImpostoRenda
             // 
             this.lblImpostoRenda.AutoSize = true;
             this.lblImpostoRenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImpostoRenda.Location = new System.Drawing.Point(257, 122);
+            this.lblImpostoRenda.Location = new System.Drawing.Point(259, 155);
             this.lblImpostoRenda.Name = "lblImpostoRenda";
             this.lblImpostoRenda.Size = new System.Drawing.Size(118, 16);
-            this.lblImpostoRenda.TabIndex = 9;
+            this.lblImpostoRenda.TabIndex = 8;
             this.lblImpostoRenda.Text = "Imposto de Renda";
             // 
             // lblSalarioLiquido
             // 
             this.lblSalarioLiquido.AutoSize = true;
             this.lblSalarioLiquido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSalarioLiquido.Location = new System.Drawing.Point(257, 178);
+            this.lblSalarioLiquido.Location = new System.Drawing.Point(259, 211);
             this.lblSalarioLiquido.Name = "lblSalarioLiquido";
             this.lblSalarioLiquido.Size = new System.Drawing.Size(97, 16);
-            this.lblSalarioLiquido.TabIndex = 10;
+            this.lblSalarioLiquido.TabIndex = 9;
             this.lblSalarioLiquido.Text = "Salário Liquido";
             // 
             // txtSalarioFolha
             // 
             this.txtSalarioFolha.Enabled = false;
-            this.txtSalarioFolha.Location = new System.Drawing.Point(381, 73);
+            this.txtSalarioFolha.Location = new System.Drawing.Point(383, 106);
             this.txtSalarioFolha.Name = "txtSalarioFolha";
             this.txtSalarioFolha.Size = new System.Drawing.Size(100, 20);
-            this.txtSalarioFolha.TabIndex = 11;
+            this.txtSalarioFolha.TabIndex = 8;
             // 
             // txtImpostoRenda
             // 
             this.txtImpostoRenda.Enabled = false;
-            this.txtImpostoRenda.Location = new System.Drawing.Point(381, 118);
+            this.txtImpostoRenda.Location = new System.Drawing.Point(383, 151);
             this.txtImpostoRenda.Name = "txtImpostoRenda";
             this.txtImpostoRenda.Size = new System.Drawing.Size(100, 20);
-            this.txtImpostoRenda.TabIndex = 12;
+            this.txtImpostoRenda.TabIndex = 9;
             // 
             // txtSalarioLiquido
             // 
             this.txtSalarioLiquido.Enabled = false;
-            this.txtSalarioLiquido.Location = new System.Drawing.Point(381, 174);
+            this.txtSalarioLiquido.Location = new System.Drawing.Point(383, 207);
             this.txtSalarioLiquido.Name = "txtSalarioLiquido";
             this.txtSalarioLiquido.Size = new System.Drawing.Size(100, 20);
-            this.txtSalarioLiquido.TabIndex = 13;
+            this.txtSalarioLiquido.TabIndex = 10;
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(406, 25);
+            this.btnLimpar.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpar.Image")));
+            this.btnLimpar.Location = new System.Drawing.Point(299, 18);
             this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpar.TabIndex = 14;
+            this.btnLimpar.Size = new System.Drawing.Size(94, 49);
+            this.btnLimpar.TabIndex = 5;
             this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
+            // btnSair
+            // 
+            this.btnSair.Image = ((System.Drawing.Image)(resources.GetObject("btnSair.Image")));
+            this.btnSair.Location = new System.Drawing.Point(410, 18);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(94, 49);
+            this.btnSair.TabIndex = 6;
+            this.btnSair.Text = "Sair";
+            this.btnSair.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // txtSalario
+            // 
+            this.txtSalario.Location = new System.Drawing.Point(28, 141);
+            this.txtSalario.Name = "txtSalario";
+            this.txtSalario.Size = new System.Drawing.Size(100, 20);
+            this.txtSalario.TabIndex = 11;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 345);
+            this.Controls.Add(this.txtSalario);
+            this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.txtSalarioLiquido);
             this.Controls.Add(this.txtImpostoRenda);
@@ -211,16 +224,15 @@
             this.Controls.Add(this.cbxClube);
             this.Controls.Add(this.lblClubeLazer);
             this.Controls.Add(this.cbxPlano);
-            this.Controls.Add(this.nudSalario);
             this.Controls.Add(this.lblSalario);
             this.Controls.Add(this.lblDataFolha);
             this.Controls.Add(this.dtpDataFolha);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Folha de pagamento";
-            ((System.ComponentModel.ISupportInitialize)(this.nudSalario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,7 +243,6 @@
         private System.Windows.Forms.DateTimePicker dtpDataFolha;
         private System.Windows.Forms.Label lblDataFolha;
         private System.Windows.Forms.Label lblSalario;
-        private System.Windows.Forms.NumericUpDown nudSalario;
         private System.Windows.Forms.CheckBox cbxPlano;
         private System.Windows.Forms.Label lblClubeLazer;
         private System.Windows.Forms.ComboBox cbxClube;
@@ -243,6 +254,8 @@
         private System.Windows.Forms.TextBox txtImpostoRenda;
         private System.Windows.Forms.TextBox txtSalarioLiquido;
         private System.Windows.Forms.Button btnLimpar;
+        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.TextBox txtSalario;
     }
 }
 

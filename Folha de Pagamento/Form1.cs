@@ -26,9 +26,15 @@ namespace Folha_de_Pagamento
         private void btnCalcular_Click(object sender, EventArgs e)
         {
 
-            salario = Convert.ToDouble(nudSalario.Value);
-            txtSalarioFolha.Text = salario.ToString("C2");
+            if (string.IsNullOrEmpty(txtSalario.Text))
+            {
+                MessageBox.Show("Informe o salário, por favor", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
+            salario = Convert.ToDouble(txtSalario.Text);
+            txtSalarioFolha.Text = salario.ToString("C2");
+            
 
             if (salario <= 2259.20)
             {
@@ -53,12 +59,6 @@ namespace Folha_de_Pagamento
 
             txtImpostoRenda.Text = $"{imposto}%";
 
-            if (cbxPlano.CheckState == CheckState.Indeterminate) 
-            {
-                MessageBox.Show("Selecione se você tem plano ou não", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
             double precoPlano;
 
             if (cbxPlano.Checked)
@@ -71,28 +71,25 @@ namespace Folha_de_Pagamento
             }
 
             double precoClube;
-            if (string.IsNullOrEmpty(cbxClube.Text)) 
-            {
-                MessageBox.Show("Selecione qual é seu clube de lazer", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else 
-            {
-             
 
-                if (cbxClube.Text == "Clube A")
-                {
-                    precoClube = 100;
-                }
-                else if (cbxClube.Text == "Clube B")
-                {
-                    precoClube = 50;
-                }
-                else 
-                {
-                    precoClube = 30;
-                }
+            if (cbxClube.Text == "Sem Plano")
+            {
+                precoClube = 0;
             }
+            else if (cbxClube.Text == "Clube A") 
+            {
+                precoClube = 100;
+            }
+            else if (cbxClube.Text == "Clube B")
+            {
+                precoClube = 50;
+            }
+            else
+            {
+                precoClube = 30;
+            }
+            
+
 
             // Calculado o salario menos o imposto
             double calcImposto = (salario * imposto) / 100;
@@ -107,12 +104,22 @@ namespace Folha_de_Pagamento
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             dtpDataFolha.Value = DateTime.Now;
-            nudSalario.Value = 0;
+            txtSalario.Clear();
             txtImpostoRenda.Clear();
             txtSalarioFolha.Clear();
             txtSalarioLiquido.Clear();    
             cbxClube.Text = string.Empty;
-            cbxPlano.CheckState = CheckState.Indeterminate;
+            cbxPlano.CheckState = CheckState.Unchecked;
         }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Deseja fechar o programa?", "Fechar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes) {
+                this.Close();
+            }
+        }
+
+      
     }
 }
