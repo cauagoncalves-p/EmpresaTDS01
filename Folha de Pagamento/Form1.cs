@@ -72,15 +72,15 @@ namespace Folha_de_Pagamento
 
             double precoClube;
 
-            if (cbxClube.Text == "Sem Plano")
+            if (cbxClube.SelectedIndex == 0)
             {
                 precoClube = 0;
             }
-            else if (cbxClube.Text == "Clube A") 
+            else if (cbxClube.SelectedIndex == 1) 
             {
                 precoClube = 100;
             }
-            else if (cbxClube.Text == "Clube B")
+            else if (cbxClube.SelectedIndex == 2)
             {
                 precoClube = 50;
             }
