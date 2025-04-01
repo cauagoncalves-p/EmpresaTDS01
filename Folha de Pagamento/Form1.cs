@@ -22,94 +22,107 @@ namespace Folha_de_Pagamento
 
         private double imposto = 0;
         private double salario = 0;
-       
+
         private void btnCalcular_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (string.IsNullOrEmpty(txtSalario.Text))
+                {
+                    MessageBox.Show("Informe o salário, por favor", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
-            if (string.IsNullOrEmpty(txtSalario.Text))
-            {
-                MessageBox.Show("Informe o salário, por favor", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            salario = Convert.ToDouble(txtSalario.Text);
-            txtSalarioFolha.Text = salario.ToString("C2");
-            
-
-            if (salario <= 2259.20)
-            {
-                imposto = 0;
-            }
-            else if (salario > 2259.21 && salario <= 2826.65)
-            {
-                imposto = 7.5;
-            }
-            else if (salario > 2826.65 && salario <= 3751.05)
-            {
-                imposto = 15;
-            }
-            else if (salario > 3751.05 && salario <= 4664.68)
-            {
-                imposto = 22.5;
-            }
-            else
-            {
-                imposto = 27.5;
-            }
-
-            txtImpostoRenda.Text = $"{imposto}%";
-
-            double precoPlano;
-
-            if (cbxPlano.Checked)
-            {
-                precoPlano = 400;
-            }
-            else 
-            {
-                precoPlano = 0;
-            }
-
-            double precoClube;
-
-            if (cbxClube.SelectedIndex == 0)
-            {
-                precoClube = 0;
-            }
-            else if (cbxClube.SelectedIndex == 1) 
-            {
-                precoClube = 100;
-            }
-            else if (cbxClube.SelectedIndex == 2)
-            {
-                precoClube = 50;
-            }
-            else
-            {
-                precoClube = 30;
-            }
-            
+                salario = Convert.ToDouble(txtSalario.Text);
+                txtSalarioFolha.Text = salario.ToString("C2");
 
 
-            // Calculado o salario menos o imposto
-            double calcImposto = (salario * imposto) / 100;
-            salario -= calcImposto;
-            // Calculado o salario menos os outros adicionais
-            salario -= precoPlano + precoClube;
-            
-            txtSalarioLiquido.Text = salario.ToString("C2");
+                if (salario <= 2259.20)
+                {
+                    imposto = 0;
+                }
+                else if (salario > 2259.21 && salario <= 2826.65)
+                {
+                    imposto = 7.5;
+                }
+                else if (salario > 2826.65 && salario <= 3751.05)
+                {
+                    imposto = 15;
+                }
+                else if (salario > 3751.05 && salario <= 4664.68)
+                {
+                    imposto = 22.5;
+                }
+                else
+                {
+                    imposto = 27.5;
+                }
 
+                txtImpostoRenda.Text = $"{imposto}%";
+
+                double precoPlano;
+
+                if (cbxPlano.Checked)
+                {
+                    precoPlano = 400;
+                }
+                else
+                {
+                    precoPlano = 0;
+                }
+
+                double precoClube;
+
+                if (cbxClube.SelectedIndex == 0)
+                {
+                    precoClube = 0;
+                }
+                else if (cbxClube.SelectedIndex == 1)
+                {
+                    precoClube = 100;
+                }
+                else if (cbxClube.SelectedIndex == 2)
+                {
+                    precoClube = 50;
+                }
+                else
+                {
+                    precoClube = 30;
+                }
+
+
+
+                // Calculado o salario menos o imposto
+                double calcImposto = (salario * imposto) / 100;
+                salario -= calcImposto;
+                // Calculado o salario menos os outros adicionais
+                salario -= precoPlano + precoClube;
+
+                txtSalarioLiquido.Text = salario.ToString("C2");
+
+            }
+            catch (Exception) {
+                MessageBox.Show("Selecione apenas números no salário");
+            }
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
-            dtpDataFolha.Value = DateTime.Now;
-            txtSalario.Clear();
-            txtImpostoRenda.Clear();
-            txtSalarioFolha.Clear();
-            txtSalarioLiquido.Clear();    
-            cbxClube.Text = string.Empty;
-            cbxPlano.CheckState = CheckState.Unchecked;
+            if (txtSalario.Text == "" && txtImpostoRenda.Text == "" && txtSalarioFolha.Text
+                == "" && txtSalarioLiquido.Text == "" && cbxClube.Text == "" && cbxPlano.CheckState == CheckState.Unchecked)
+            {
+                MessageBox.Show("Todos os campos estão vazios");
+            }
+            else {
+                dtpDataFolha.Value = DateTime.Now;
+                txtSalario.Clear();
+                txtImpostoRenda.Clear();
+                txtSalarioFolha.Clear();
+                txtSalarioLiquido.Clear();
+                cbxClube.Text = string.Empty;
+                cbxPlano.CheckState = CheckState.Unchecked;
+            }
+            
         }
 
         private void btnSair_Click(object sender, EventArgs e)
