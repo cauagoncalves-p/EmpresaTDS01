@@ -17,25 +17,26 @@ namespace Padaria
             InitializeComponent();
         }
 
+        public void LimparCampos() 
+        {
+            txtbNum1.Clear();
+            txtbNum2.Clear();
+            txtbResposta.Clear();
+        }
+        public void LimparCamposDesabilitados() 
+        {
+            txtbNum1.Clear();
+            txtbNum2.Clear();
+            txtbResposta.Clear();
+
+            rdbtnDividir.Checked = false;
+            rdbtnSoma.Checked = false;
+            rdbtnMultiplicar.Checked = false;
+            rdbtnSubtrair.Checked = false;
+        }
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            /* Declarando uma variável no C#
-             *  tipo e nome
-             */
-
-            //int valor1, valor4, resp;
-            //double valor2; 
-            //float valor3;
-            //bool flag;
-            //string name;
-            //char sexo;
-
-            //// Inicializando as variáveis
-
-            //valor1 = 10;
-            //valor4 = 20;
-            //resp = valor1 + valor4;
-
+            operacoes operacoes = new operacoes();  
             double num1, num2, res = 0;
             if (string.IsNullOrEmpty(txtbNum1.Text) || string.IsNullOrEmpty(txtbNum2.Text))
             {
@@ -47,8 +48,6 @@ namespace Padaria
                 num1 = Convert.ToDouble(txtbNum1.Text);
                 num2 = Convert.ToDouble(txtbNum2.Text);
 
-
-
                 if (rdbtnSoma.Checked == false && rdbtnMultiplicar.Checked == false && rdbtnDividir.Checked == false && rdbtnSubtrair.Checked == false)
                 {
                     MessageBox.Show("Selecionar uma operação", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -57,28 +56,22 @@ namespace Padaria
                 {
                     if (rdbtnSoma.Checked)
                     {
-                        res = num1 + num2;
+                       
+                        res = operacoes.Soma(num1, num2);
                     }
                     if (rdbtnSubtrair.Checked)
                     {
-                        res = num1 - num2;
+                       
+                        res = operacoes.Subtratir(num1, num2);
                     }
                     if (rdbtnMultiplicar.Checked)
                     {
-                        res = num1 * num2;
+                      
+                        res = operacoes.Multiplicar(num1, num2);
                     }
                     if (rdbtnDividir.Checked)
                     {
-                        if (num2 == 0)
-                        {
-                            MessageBox.Show("Impossivel dividir por zero", "Error", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-                            res = 0;
-                        }
-                        else
-                        {
-                            res = num1 / num2;
-                        }
-
+                        res = operacoes.Divisao(num1, num2);
                     }
 
                     txtbResposta.Text = res.ToString();
@@ -87,6 +80,7 @@ namespace Padaria
             catch (Exception)
             {
                 MessageBox.Show("Favor inserir somente numeros", "Error", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                LimparCampos();            
             }
 
         }
@@ -98,14 +92,7 @@ namespace Padaria
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
-            txtbNum1.Clear();
-            txtbNum2.Clear();
-            txtbResposta.Clear();
-
-            rdbtnDividir.Checked = false;
-            rdbtnSoma.Checked = false;
-            rdbtnMultiplicar.Checked = false;
-            rdbtnSubtrair.Checked = false;
+            LimparCamposDesabilitados();
         }
     }
 }
