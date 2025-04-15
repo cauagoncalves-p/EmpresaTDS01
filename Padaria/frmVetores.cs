@@ -19,10 +19,11 @@ namespace Padaria
 
         private void adicionarnome()
         {
+            // transforma o texto em numero
             int tamanho = int.Parse(txtTamanho.Text);
+            // inicia o vetor nomes com o tamanho decidido pelo usuario
             string[] nomes = new string[tamanho];
 
-           
             string palavra = txtNomes.Text;
             while (tamanho > 0) 
             {
@@ -30,8 +31,7 @@ namespace Padaria
                 tamanho--;
                 MessageBox.Show(nomes[tamanho].ToString());
               
-            }    
-           
+            }     
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
