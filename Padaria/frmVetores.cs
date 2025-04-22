@@ -12,6 +12,10 @@ namespace Padaria
 {
     public partial class frmVetores : Form
     {
+        public static int tamanho = 0;
+        private string[] nomes = new string[5];
+        private int contador = 0;
+        
         public frmVetores()
         {
             InitializeComponent();
@@ -19,29 +23,31 @@ namespace Padaria
 
         private void adicionarnome()
         {
-            // transforma o texto em numero
-            int tamanho = int.Parse(txtTamanho.Text);
-            // inicia o vetor nomes com o tamanho decidido pelo usuario
-            string[] nomes = new string[tamanho];
-
-            string palavra = txtNomes.Text;
-            while (tamanho > 0) 
+            //tamanho = int.Parse(txtTamanho.Text);
+            for (int i = contador; i < nomes.Length; i++) 
             {
-                nomes[tamanho - 1] = palavra;
-                tamanho--;
-                MessageBox.Show(nomes[tamanho].ToString());
-              
-            }     
+                if (txtNomes.Text == "") 
+                {
+                    MessageBox.Show("Nome Adicionado");
+                    return;
+                }
+                txtNomes.Focus();
+                string palavra = txtNomes.Text;
+                nomes[i] = palavra;
+                txtNomes.Clear();
+                contador++;
+            }
+            listNome.Items.Clear();
+            foreach (string s in nomes) 
+            {
+                listNome.Items.Add(s);  
+            }  
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-           adicionarnome();
-        }
-
-        private void btnSalvarNome_Click(object sender, EventArgs e)
-        {
-
+            adicionarnome();
+           
         }
     }
 }

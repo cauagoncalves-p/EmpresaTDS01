@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Padaria
+namespace Matriz
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace Padaria
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmGerarNumaleatorio());
+            Application.Run(new Form1());
         }
     }
 }
