@@ -42,15 +42,16 @@
             this.lblNota3 = new System.Windows.Forms.Label();
             this.txtProva2 = new System.Windows.Forms.TextBox();
             this.lblNota2 = new System.Windows.Forms.Label();
+            this.btnAdicionar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCarregarMatriz
             // 
-            this.btnCarregarMatriz.Location = new System.Drawing.Point(12, 333);
+            this.btnCarregarMatriz.Location = new System.Drawing.Point(12, 351);
             this.btnCarregarMatriz.Name = "btnCarregarMatriz";
             this.btnCarregarMatriz.Size = new System.Drawing.Size(105, 56);
-            this.btnCarregarMatriz.TabIndex = 0;
-            this.btnCarregarMatriz.Text = "Carregar Matriz";
+            this.btnCarregarMatriz.TabIndex = 5;
+            this.btnCarregarMatriz.Text = "carregar matriz";
             this.btnCarregarMatriz.UseVisualStyleBackColor = true;
             this.btnCarregarMatriz.Click += new System.EventHandler(this.btnCarregarMatriz_Click);
             // 
@@ -76,32 +77,34 @@
             this.txtNome.Location = new System.Drawing.Point(117, 39);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(100, 20);
-            this.txtNome.TabIndex = 7;
+            this.txtNome.TabIndex = 0;
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(273, 333);
+            this.btnSair.Location = new System.Drawing.Point(396, 351);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(105, 56);
             this.btnSair.TabIndex = 8;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(140, 333);
+            this.btnLimpar.Location = new System.Drawing.Point(268, 351);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(105, 56);
-            this.btnLimpar.TabIndex = 9;
+            this.btnLimpar.TabIndex = 7;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // txtProva1
             // 
             this.txtProva1.Location = new System.Drawing.Point(117, 106);
             this.txtProva1.Name = "txtProva1";
             this.txtProva1.Size = new System.Drawing.Size(100, 20);
-            this.txtProva1.TabIndex = 11;
+            this.txtProva1.TabIndex = 1;
             // 
             // lblNota1
             // 
@@ -117,7 +120,7 @@
             this.txtnotaTrabalho.Location = new System.Drawing.Point(117, 219);
             this.txtnotaTrabalho.Name = "txtnotaTrabalho";
             this.txtnotaTrabalho.Size = new System.Drawing.Size(100, 20);
-            this.txtnotaTrabalho.TabIndex = 13;
+            this.txtnotaTrabalho.TabIndex = 4;
             // 
             // lblTrabalho
             // 
@@ -133,8 +136,8 @@
             this.txtProva3.Location = new System.Drawing.Point(117, 180);
             this.txtProva3.Name = "txtProva3";
             this.txtProva3.Size = new System.Drawing.Size(100, 20);
-            this.txtProva3.TabIndex = 15;
-            // 
+            this.txtProva3.TabIndex = 3;
+        
             // lblNota3
             // 
             this.lblNota3.AutoSize = true;
@@ -149,7 +152,7 @@
             this.txtProva2.Location = new System.Drawing.Point(117, 143);
             this.txtProva2.Name = "txtProva2";
             this.txtProva2.Size = new System.Drawing.Size(100, 20);
-            this.txtProva2.TabIndex = 17;
+            this.txtProva2.TabIndex = 2;
             // 
             // lblNota2
             // 
@@ -160,11 +163,22 @@
             this.lblNota2.TabIndex = 16;
             this.lblNota2.Text = "Prova 2";
             // 
+            // btnAdicionar
+            // 
+            this.btnAdicionar.Location = new System.Drawing.Point(138, 351);
+            this.btnAdicionar.Name = "btnAdicionar";
+            this.btnAdicionar.Size = new System.Drawing.Size(105, 56);
+            this.btnAdicionar.TabIndex = 6;
+            this.btnAdicionar.Text = "adicionar";
+            this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 441);
+            this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.txtProva2);
             this.Controls.Add(this.lblNota2);
             this.Controls.Add(this.txtProva3);
@@ -203,6 +217,7 @@
         private System.Windows.Forms.Label lblNota3;
         private System.Windows.Forms.TextBox txtProva2;
         private System.Windows.Forms.Label lblNota2;
+        private System.Windows.Forms.Button btnAdicionar;
     }
 }
 
