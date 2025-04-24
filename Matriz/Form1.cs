@@ -23,23 +23,28 @@ namespace Matriz
         int[,] trabalho = new int[3, 3];
         string[,] resultado = new string[3, 3];
         double[,] media = new double[3, 3];
-        string[,] aluno = new string[1, 3];
+        string[,] aluno = new string[3, 3];
         int linha = 0;
         int coluna = 0;
 
 
+
         private void carregar()
         {
-          
+            int provaAluno1 = Convert.ToInt32(txtProva1.Text);
+            int provaAluno2 = Convert.ToInt32(txtProva2.Text);
+            int provaAluno3 = Convert.ToInt32(txtProva3.Text);
+            int trabalhoAluno = Convert.ToInt32(txtnotaTrabalho.Text);
+
 
             lboListaMatriz.Items.Clear();
             try
             {
                 aluno[linha, coluna] = txtNome.Text;
-                prova1[linha, coluna] = Convert.ToInt32(txtProva1.Text);
-                prova2[linha, coluna] = Convert.ToInt32(txtProva2.Text);
-                prova3[linha, coluna] = Convert.ToInt32(txtProva3.Text);
-                trabalho[linha, coluna] = Convert.ToInt32(txtnotaTrabalho.Text);
+                prova1[linha, coluna] = provaAluno1;
+                prova2[linha, coluna] = provaAluno2;
+                prova3[linha, coluna] = provaAluno3;
+                trabalho[linha, coluna] = trabalhoAluno; 
                 txtNome.Clear();
                 txtProva1.Clear();
                 txtProva2.Clear();
@@ -66,7 +71,7 @@ namespace Matriz
                     lboListaMatriz.Items.Add($"Nota da segunda prova: {prova2[i, j]}");
                     lboListaMatriz.Items.Add($"Nota da terceira prova: {prova3[i, j]}");
                     lboListaMatriz.Items.Add($"Nota do trabalho: {trabalho[i, j]}");
-                    lboListaMatriz.Items.Add($"Média do aluno(a) {aluno[i,j]}: { media[i,j] = (prova1[i, j] + prova2[i, j] + prova3[i, j] + trabalho[i, j]) / 4}");
+                    lboListaMatriz.Items.Add($"Média do aluno(a) {aluno[i,j]}: { media[i,j] = (double)(prova1[i, j] + prova2[i, j] + prova3[i, j] + trabalho[i, j]) / 4}");
 
                     if (media[i, j] >= 8)
                     {
@@ -94,9 +99,23 @@ namespace Matriz
                 return;
             }
 
+            int provaAluno1 = Convert.ToInt32(txtProva1.Text);
+            int provaAluno2 = Convert.ToInt32(txtProva2.Text);
+            int provaAluno3 = Convert.ToInt32(txtProva3.Text);
+            int trabalhoAluno = Convert.ToInt32(txtnotaTrabalho.Text);
+
+            if ((provaAluno1 < 0 || provaAluno1 > 10) || (provaAluno2 < 0 || provaAluno2 > 10) || (provaAluno3 < 0 || provaAluno3 > 10)
+              || (trabalhoAluno < 0 || trabalhoAluno > 10))
+            {
+                MessageBox.Show("As notas vão de 0 até 10!");
+                return;
+            }
+
             carregar();
 
             coluna++;
+
+            //[3;3]
             if (coluna >= aluno.GetLength(1))
             {
                 coluna = 0;
